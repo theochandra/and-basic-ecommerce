@@ -10,6 +10,7 @@ buildscript {
     // lifecycle
     ext.lifecycle_version = '2.2.0'
 
+    // room
     ext.room_version = '2.2.6'
 
     // coroutines
