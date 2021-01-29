@@ -12,8 +12,8 @@ interface BasicEcommerceRepository {
 
     suspend fun getPurchasedProducts(): Result<List<ProductPromo>>
 
-    suspend fun addPurchasedProduct(product: ProductPromo): Int
+    suspend fun addPurchasedProduct(product: ProductPromo): Long
 
-    suspend fun removePurchasedProduct(productId: Int): Int
+    suspend fun removePurchasedProduct(product: ProductPromo): Int
 
 }

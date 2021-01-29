@@ -6,7 +6,7 @@ import com.android.domain.repository.BasicEcommerceRepository
 
 class AddPurchasedProductUseCase(private val repository: BasicEcommerceRepository) {
 
-    suspend fun execute(product: ProductPromo): Int = repository.addPurchasedProduct(product)
+    suspend fun execute(product: ProductPromo): Long = repository.addPurchasedProduct(product)
 
 
 }
