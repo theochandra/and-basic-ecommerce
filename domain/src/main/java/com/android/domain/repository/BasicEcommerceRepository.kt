@@ -6,6 +6,8 @@ import com.android.domain.model.ProductPromo
 
 interface BasicEcommerceRepository {
 
+    suspend fun login(userName: String, password: String): Boolean
+
     suspend fun getHomeScreenData(): Result<Data>
 
     suspend fun getSearchedData(): Result<List<ProductPromo>>
