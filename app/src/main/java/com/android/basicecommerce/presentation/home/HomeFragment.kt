@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.basicecommerce.R
 import com.android.basicecommerce.databinding.FragmentHomeBinding
 import com.android.basicecommerce.di.Injector
+import com.android.basicecommerce.presentation.model.ProductVM
+import com.android.basicecommerce.presentation.product.ProductActivity
 import javax.inject.Inject
 
 class HomeFragment : Fragment() {
@@ -27,6 +29,7 @@ class HomeFragment : Fragment() {
     private lateinit var viewModel: HomeViewModel
 
     private lateinit var categoryAdapter: CategoryAdapter
+    private lateinit var productAdapter: ProductHeroAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,16 +51,10 @@ class HomeFragment : Fragment() {
         binding.viewModel = viewModel
 
         initCategoryRecyclerView()
+        initProductRecyclerView()
+
         observeCategoryList()
         observeProductList()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
     }
 
     private fun initCategoryRecyclerView() {
@@ -69,16 +66,31 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun initProductRecyclerView() {
+        productAdapter = ProductHeroAdapter{
+            selectedProduct: ProductVM -> productItemClicked(selectedProduct) }
+        binding.rvProduct.apply {
+            layoutManager = LinearLayoutManager(activity,
+                LinearLayoutManager.VERTICAL, false)
+            adapter = productAdapter
+        }
+    }
+
     private fun observeCategoryList() {
-        viewModel.categoryList.observe(viewLifecycleOwner, {
-            categoryAdapter.setCategoryList(it)
+        viewModel.categoryList.observe(viewLifecycleOwner, { categories ->
+            categoryAdapter.setCategoryList(categories)
         })
     }
 
     private fun observeProductList() {
-        viewModel.productList.observe(viewLifecycleOwner, {
-
+        viewModel.productList.observe(viewLifecycleOwner, { products ->
+            productAdapter.setProductList(products)
         })
+    }
+
+    private fun productItemClicked(product: ProductVM) {
+        val intent = activity?.let { ProductActivity.newIntent(it, product) }
+        startActivity(intent)
     }
 
 }
