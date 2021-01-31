@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Basic Ecommerce</string>
+
+    <string name="label_login">Login</string>
+    <string name="hint_user_name">Masukkan username Anda</string>
+    <string name="hint_password">Masukkan password Anda</string>
+
+    <string name="facebook_app_id">1625825554180453</string>
+    <string name="fb_login_protocol_scheme">fb1625825554180453</string>
+
+    <string name="label_menu_home">Home</string>
+    <string name="label_menu_feed">Feed</string>
+    <string name="label_menu_cart">Cart</string>
+    <string name="label_menu_profile">Profile</string>
+
+    <string name="hint_search_product">Masukkan nama produk...</string>
 </resources>
