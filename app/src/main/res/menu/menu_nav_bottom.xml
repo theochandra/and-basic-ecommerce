@@ -10,7 +10,8 @@
     <item
         android:id="@+id/menu_feed"
         android:enabled="true"
-        android:title="@string/label_menu_feed" />
+        android:title="@string/label_menu_feed"
+        android:icon="@drawable/ic_action_feed" />
 
     <item
         android:id="@+id/menu_cart"

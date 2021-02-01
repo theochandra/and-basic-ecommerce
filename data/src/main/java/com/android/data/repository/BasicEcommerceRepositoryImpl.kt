@@ -24,7 +24,7 @@ class BasicEcommerceRepositoryImpl(
     override suspend fun getHomeScreenData(): Result<Data> {
         return safeApiCall(
             call = { getHomeScreenDataFromApi() },
-            errorMessage = "Exception Occurred!"
+            errorMessage = "Oops.. Terjadi kesalahan pada sistem!\nCobalah beberapa saat lagi."
         )
     }
 
