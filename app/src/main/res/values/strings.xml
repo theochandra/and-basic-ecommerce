@@ -2,6 +2,7 @@
     <string name="app_name">Basic Ecommerce</string>
 
     <string name="label_login">Login</string>
+    <string name="label_purchase_history">Purchase History</string>
     <string name="hint_user_name">Masukkan username Anda</string>
     <string name="hint_password">Masukkan password Anda</string>
 
@@ -14,4 +15,16 @@
     <string name="label_menu_profile">Profile</string>
 
     <string name="hint_search_product">Masukkan nama produk...</string>
+
+    <string name="label_btn_buy">Beli</string>
+
+    <string name="label_share_subject">Cek Produk Ini</string>
+    <string name="label_share_body">Ayo lihat produk yang baru saya cek ini - %1$s</string>
+    <string name="label_share_using">Share Menggunakan</string>
+
+    <string name="label_alert_title">Informasi</string>
+    <string name="label_alert_menu_unavailable">Oops.. menu ini masih belum tersedia</string>
+    <string name="label_alert_success_add_purchased_product">Produk %1$s berhasil ditambahkan</string>
+    <string name="label_alert_failed_add_purchased_product">Produk %1$s gagal ditambahkan</string>
+    <string name="label_alert_neutral_button">OKE</string>
 </resources>

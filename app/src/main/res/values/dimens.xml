@@ -32,15 +32,12 @@
 
     <dimen name="product_image_height">185dp</dimen>
 
-    <dimen name="height_s"></dimen>
-    <dimen name="height_m"></dimen>
-    <dimen name="height_l"></dimen>
-    <dimen name="height_xl"></dimen>
+    <dimen name="remove_icon_width">36dp</dimen>
 
-    <dimen name="headerTextSize">22sp</dimen>
-    <dimen name="newsMoreTextSize">12sp</dimen>
-    <dimen name="loginCardRadius">20dp</dimen>
-    <dimen name="loginViewsMargin">20dp</dimen>
+<!--    <dimen name="headerTextSize">22sp</dimen>-->
+<!--    <dimen name="newsMoreTextSize">12sp</dimen>-->
+<!--    <dimen name="loginCardRadius">20dp</dimen>-->
+<!--    <dimen name="loginViewsMargin">20dp</dimen>-->
 
     <dimen name="signup_text_margin_top">10dp</dimen>
 </resources>
