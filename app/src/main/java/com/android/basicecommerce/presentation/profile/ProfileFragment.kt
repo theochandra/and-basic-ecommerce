@@ -51,6 +51,10 @@ class ProfileFragment : BaseFragment() {
             .get(ProfileViewModel::class.java)
 
         observeProductList()
+        observeException()
+        observeError()
+
+        observeRowDeleted()
     }
 
     private fun initRecyclerView() {
@@ -65,18 +69,52 @@ class ProfileFragment : BaseFragment() {
         }
     }
 
+    private fun productItemClicked(product: ProductVM) {
+        Toast.makeText(activity, "item", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun removeProductClicked(product: ProductVM) {
+        viewModel.removePurchasedProduct(product)
+    }
+
     private fun observeProductList() {
         viewModel.productList.observe(viewLifecycleOwner, { products ->
             productAdapter.setProductList(products)
         })
     }
 
-    private fun productItemClicked(product: ProductVM) {
-        Toast.makeText(activity, "item", Toast.LENGTH_SHORT).show()
+    private fun observeException() {
+        viewModel.exception.observe(viewLifecycleOwner, { exception ->
+            exception.message?.let { message ->
+                showAlertMessage(
+                    getString(R.string.label_alert_title),
+                    message,
+                    getString(R.string.label_alert_neutral_button)
+                )
+            }
+        })
     }
-    
-    private fun removeProductClicked(product: ProductVM) {
-        Toast.makeText(activity, "remove", Toast.LENGTH_SHORT).show()
+
+    private fun observeError() {
+        viewModel.error.observe(viewLifecycleOwner, { errorMessage ->
+            showAlertMessage(
+                getString(R.string.label_alert_title),
+                errorMessage,
+                getString(R.string.label_alert_neutral_button)
+            )
+        })
+    }
+
+    private fun observeRowDeleted() {
+        viewModel.rowDeleted.observe(viewLifecycleOwner, { rowDeleted ->
+            if (rowDeleted > 0) {
+                showAlertMessage(
+                    getString(R.string.label_alert_title),
+                    getString(R.string.label_alert_success_remove_purchased_product),
+                    getString(R.string.label_alert_neutral_button)
+                )
+            }
+        })
     }
 
 }

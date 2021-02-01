@@ -26,5 +26,6 @@
     <string name="label_alert_menu_unavailable">Oops.. menu ini masih belum tersedia</string>
     <string name="label_alert_success_add_purchased_product">Produk %1$s berhasil ditambahkan</string>
     <string name="label_alert_failed_add_purchased_product">Produk %1$s gagal ditambahkan</string>
+    <string name="label_alert_success_remove_purchased_product">Produk berhasil dihapus</string>
     <string name="label_alert_neutral_button">OKE</string>
 </resources>
