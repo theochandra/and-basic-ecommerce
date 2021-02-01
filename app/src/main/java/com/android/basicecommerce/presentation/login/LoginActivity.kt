@@ -92,7 +92,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun startNextActivity() {
-        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+        val intent = MainActivity.newIntent(this)
         startActivity(intent)
     }
 
