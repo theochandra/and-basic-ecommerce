@@ -14,7 +14,7 @@ import com.android.basicecommerce.di.Injector
 import com.android.basicecommerce.presentation.model.ProductVM
 import com.android.basicecommerce.presentation.product.ProductActivity
 import com.android.basicecommerce.presentation.search.SearchActivity
-import kotlinx.android.synthetic.main.component_search_input.view.*
+import kotlinx.android.synthetic.main.layout_search_bar_home.view.*
 import javax.inject.Inject
 
 class HomeFragment : BaseFragment() {
@@ -117,8 +117,8 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun startSearchActivity() {
-        binding.searchBar.et_search_keywords.isFocusableInTouchMode = false
-        binding.searchBar.et_search_keywords.setOnClickListener {
+//        binding.searchBar.etSearchKeywords.isFocusableInTouchMode = false
+        binding.searchBar.etSearchKeywords.setOnClickListener {
             val intent = activity?.let { SearchActivity.newIntent(it) }
             startActivity(intent)
         }
