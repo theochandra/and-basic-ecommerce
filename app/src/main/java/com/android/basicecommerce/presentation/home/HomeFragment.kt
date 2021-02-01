@@ -1,7 +1,6 @@
 package com.android.basicecommerce.presentation.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,13 +8,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.basicecommerce.R
+import com.android.basicecommerce.base.BaseFragment
 import com.android.basicecommerce.databinding.FragmentHomeBinding
 import com.android.basicecommerce.di.Injector
 import com.android.basicecommerce.presentation.model.ProductVM
 import com.android.basicecommerce.presentation.product.ProductActivity
+import com.android.basicecommerce.presentation.search.SearchActivity
+import kotlinx.android.synthetic.main.component_search_input.view.*
 import javax.inject.Inject
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment() {
 
     companion object {
         @JvmStatic
@@ -55,6 +57,10 @@ class HomeFragment : Fragment() {
 
         observeCategoryList()
         observeProductList()
+        observeError()
+        observeException()
+
+        startSearchActivity()
     }
 
     private fun initCategoryRecyclerView() {
@@ -86,6 +92,36 @@ class HomeFragment : Fragment() {
         viewModel.productList.observe(viewLifecycleOwner, { products ->
             productAdapter.setProductList(products)
         })
+    }
+
+    private fun observeError() {
+        viewModel.error.observe(viewLifecycleOwner, { errorMessage ->
+            showAlertMessage(
+                getString(R.string.label_alert_title),
+                errorMessage,
+                getString(R.string.label_alert_neutral_button)
+            )
+        })
+    }
+
+    private fun observeException() {
+        viewModel.exception.observe(viewLifecycleOwner, { exception ->
+            exception.message?.let { message ->
+                showAlertMessage(
+                    getString(R.string.label_alert_title),
+                    message,
+                    getString(R.string.label_alert_neutral_button)
+                )
+            }
+        })
+    }
+
+    private fun startSearchActivity() {
+        binding.searchBar.et_search_keywords.isFocusableInTouchMode = false
+        binding.searchBar.et_search_keywords.setOnClickListener {
+            val intent = activity?.let { SearchActivity.newIntent(it) }
+            startActivity(intent)
+        }
     }
 
     private fun productItemClicked(product: ProductVM) {

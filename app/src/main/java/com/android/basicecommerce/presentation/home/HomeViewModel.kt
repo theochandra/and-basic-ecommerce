@@ -25,6 +25,14 @@ class HomeViewModel(
     val productList: LiveData<List<ProductVM>>
         get() = _productList
 
+    private val _error = MutableLiveData<String>()
+    val error: LiveData<String>
+        get() = _error
+
+    private val _exception = MutableLiveData<Exception>()
+    val exception: LiveData<Exception>
+        get() = _exception
+
     val isLoading = ObservableBoolean()
 
     init {
@@ -34,8 +42,7 @@ class HomeViewModel(
     private fun getData() {
         changeLoadingState(true)
         viewModelScope.launch {
-            val result = getHomeScreenDataUseCase.execute()
-            when(result) {
+            when(val result = getHomeScreenDataUseCase.execute()) {
                 is Result.Success -> {
                     _categoryList.postValue(result.data.categoryList.map {
                         mapper.map(it)
@@ -45,17 +52,17 @@ class HomeViewModel(
                     })
                 }
                 is Result.Error -> {
-
+                    _error.postValue(result.errorMessage)
                 }
                 is Result.Exception -> {
-
+                    _exception.postValue(result.exception)
                 }
             }
             changeLoadingState(false)
         }
     }
 
-    fun changeLoadingState(state: Boolean) {
+    private fun changeLoadingState(state: Boolean) {
         isLoading.set(state)
     }
 
