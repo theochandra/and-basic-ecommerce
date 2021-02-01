@@ -17,7 +17,7 @@ class DataMapper {
         )
     }
 
-    private fun map(categoryResponse: CategoryResponse): Category {
+    fun map(categoryResponse: CategoryResponse): Category {
         return Category(
             imageUrl = categoryResponse.imageUrl,
             id = categoryResponse.id,
@@ -25,7 +25,7 @@ class DataMapper {
         )
     }
 
-    private fun map(productPromoResponse: ProductPromoResponse): ProductPromo {
+    fun map(productPromoResponse: ProductPromoResponse): ProductPromo {
         return ProductPromo(
             id = productPromoResponse.id,
             imageUrl = productPromoResponse.imageUrl,
@@ -40,7 +40,7 @@ class DataMapper {
         return productList.map { map(it) }
     }
 
-    private fun map(product: com.android.data.model.Product): ProductPromo {
+    fun map(product: com.android.data.model.Product): ProductPromo {
         return ProductPromo(
             id = product.id,
             imageUrl = product.imageUrl,
@@ -55,7 +55,7 @@ class DataMapper {
         return productList.map { map(it) }
     }
 
-    private fun map(product: com.android.data.entity.Product): ProductPromo {
+    fun map(product: com.android.data.entity.Product): ProductPromo {
         return ProductPromo(
             id = product.id,
             imageUrl = product.imageUrl,
