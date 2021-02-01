@@ -2,6 +2,8 @@ package com.android.basicecommerce.di.application
 
 import com.android.basicecommerce.di.home.HomeSubComponent
 import com.android.basicecommerce.di.login.LoginSubComponent
+import com.android.basicecommerce.di.product.ProductSubComponent
+import com.android.basicecommerce.di.profile.ProfileSubComponent
 import dagger.Component
 import javax.inject.Singleton
 
@@ -22,5 +24,9 @@ interface AppComponent {
     fun loginSubComponent(): LoginSubComponent.Factory
 
     fun homeSubComponent(): HomeSubComponent.Factory
+
+    fun productSubComponent(): ProductSubComponent.Factory
+
+    fun profileSubComponent(): ProfileSubComponent.Factory
 
 }

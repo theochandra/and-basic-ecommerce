@@ -6,6 +6,8 @@ import com.android.basicecommerce.di.Injector
 import com.android.basicecommerce.di.application.*
 import com.android.basicecommerce.di.home.HomeSubComponent
 import com.android.basicecommerce.di.login.LoginSubComponent
+import com.android.basicecommerce.di.product.ProductSubComponent
+import com.android.basicecommerce.di.profile.ProfileSubComponent
 
 class BaseApplication : Application(), Injector {
 
@@ -26,6 +28,14 @@ class BaseApplication : Application(), Injector {
 
     override fun createHomeSubComponent(): HomeSubComponent {
         return appComponent.homeSubComponent().create()
+    }
+
+    override fun createProductSubComponent(): ProductSubComponent {
+        return appComponent.productSubComponent().create()
+    }
+
+    override fun createProfileSubComponent(): ProfileSubComponent {
+        return appComponent.profileSubComponent().create()
     }
 
 }
