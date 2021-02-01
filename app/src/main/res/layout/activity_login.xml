@@ -59,7 +59,6 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_user_name"
-                            android:text="@={viewModel.userName}"
                             android:inputType="text"
                             android:maxLines="1"
                             android:textSize="@dimen/font_size_m"
@@ -79,7 +78,6 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_password"
-                            android:text="@={viewModel.password}"
                             android:inputType="textPassword"
                             android:maxLines="1"
                             android:textSize="@dimen/font_size_m"
@@ -87,6 +85,11 @@
                             android:layout_height="wrap_content"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
+
+                    <CheckBox
+                        android:text="@string/label_remember_me"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
                     <Button
                         android:id="@+id/btn_login"

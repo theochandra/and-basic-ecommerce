@@ -10,6 +10,7 @@ import com.android.basicecommerce.R
 import com.android.basicecommerce.databinding.ActivityLoginBinding
 import com.android.basicecommerce.di.Injector
 import com.android.basicecommerce.presentation.MainActivity
+import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
@@ -39,9 +40,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var callbackManager: CallbackManager
 
-    private var userName = ""
-    private var password = ""
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -64,10 +62,6 @@ class LoginActivity : AppCompatActivity() {
         // Facebook Authentication
         callbackManager = CallbackManager.Factory.create()
 
-        observeUserName()
-        observePassword()
-        observeInput()
-
         loginClicked()
         googleSignInClicked()
         facebookSignInClicked()
@@ -76,8 +70,13 @@ class LoginActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         val googleAccount = GoogleSignIn.getLastSignedInAccount(this)
+        val isLoggedInFacebook = AccessToken.getCurrentAccessToken()
 
         if (googleAccount != null) {
+            startNextActivity()
+        }
+
+        if (isLoggedInFacebook != null) {
             startNextActivity()
         }
     }
@@ -94,34 +93,6 @@ class LoginActivity : AppCompatActivity() {
     private fun startNextActivity() {
         val intent = MainActivity.newIntent(this)
         startActivity(intent)
-    }
-
-    private fun observeInput() {
-//        viewModel.isFormValid.observe(this, { valid ->
-//            binding.btnLogin.isEnabled = valid
-//        })
-    }
-
-    private fun validateForm() {
-        binding.btnLogin.isEnabled = userName.isNotEmpty() && password.isNotEmpty()
-    }
-
-    private fun observeUserName() {
-        viewModel.getUserName().observe(this, { userName ->
-            this.userName = userName
-            validateForm()
-            if (userName.isEmpty()) binding.textInputUserName.error = "Jangan kosong"
-            else binding.textInputUserName.error = null
-        })
-    }
-
-    private fun observePassword() {
-        viewModel.getPassword().observe(this, { password ->
-            this.password = password
-            validateForm()
-            if (password.isEmpty()) binding.textInputPassword.error = "Jangan Kosong"
-            else binding.textInputPassword.error = null
-        })
     }
 
     private fun loginClicked() {
