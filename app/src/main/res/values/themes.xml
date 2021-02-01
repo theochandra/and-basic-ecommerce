@@ -47,4 +47,8 @@
         <item name="android:layout_marginTop">@dimen/margin_m</item>
         <item name="android:layout_marginBottom">@dimen/margin_m</item>
     </style>
+
+    <style name="container">
+        <item name="backgroundColor">@color/white_200</item>
+    </style>
 </resources>

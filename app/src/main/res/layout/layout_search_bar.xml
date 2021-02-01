@@ -39,6 +39,7 @@
             android:layout_toEndOf="@+id/iv_back"
             android:layout_marginStart="@dimen/margin_s"
             android:padding="@dimen/padding_s"
+            android:textColor="@color/gray"
             android:textSize="@dimen/font_size_m" />
 
     </RelativeLayout>

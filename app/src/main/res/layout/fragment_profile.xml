@@ -34,6 +34,7 @@
             <TextView
                 android:id="@+id/tv_screen_title"
                 android:text="@string/label_purchase_history"
+                android:textColor="@color/black"
                 android:gravity="center_vertical"
                 android:layout_marginTop="@dimen/zero_dp"
                 android:layout_marginBottom="@dimen/zero_dp"

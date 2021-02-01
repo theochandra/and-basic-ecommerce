@@ -118,7 +118,7 @@
             android:paddingBottom="@dimen/padding_s"
             android:paddingStart="@dimen/padding_m"
             android:paddingEnd="@dimen/padding_m"
-            android:background="@color/white_200"
+            style="@style/container"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" >
