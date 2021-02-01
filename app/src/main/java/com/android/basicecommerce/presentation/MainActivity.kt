@@ -48,6 +48,14 @@ class MainActivity : BaseActivity() {
     private fun setCurrentFragment(fragment: Fragment) = supportFragmentManager
         .beginTransaction().apply {
             replace(R.id.frame_layout, fragment)
+            addToBackStack(fragment.javaClass.name)
             commit()
         }
+
+    override fun onBackPressed() {
+        val count = supportFragmentManager.backStackEntryCount
+        if (count == 0) super.onBackPressed()
+        else supportFragmentManager.popBackStack()
+    }
+
 }
