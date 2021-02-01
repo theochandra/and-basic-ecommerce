@@ -4,12 +4,13 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI.onNavDestinationSelected
+import androidx.navigation.ui.setupWithNavController
 import com.android.basicecommerce.R
 import com.android.basicecommerce.base.BaseActivity
 import com.android.basicecommerce.databinding.ActivityMainBinding
-import com.android.basicecommerce.presentation.home.HomeFragment
-import com.android.basicecommerce.presentation.profile.ProfileFragment
+
 
 class MainActivity : BaseActivity() {
 
@@ -27,35 +28,16 @@ class MainActivity : BaseActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        val homeFragment = HomeFragment.newInstance()
-        val profileFragment = ProfileFragment.newInstance()
-
-        setCurrentFragment(homeFragment)
-
-        binding.navBottom.setOnNavigationItemSelectedListener {
-            when(it.itemId) {
-                R.id.menu_home -> setCurrentFragment(homeFragment)
-                R.id.menu_profile -> setCurrentFragment(profileFragment)
-                else -> showAlertMessage(
-                    getString(R.string.label_alert_title),
-                    getString(R.string.label_alert_menu_unavailable),
-                    getString(R.string.label_alert_neutral_button))
-            }
-            true
-        }
+        setUpNavigation()
     }
 
-    private fun setCurrentFragment(fragment: Fragment) = supportFragmentManager
-        .beginTransaction().apply {
-            replace(R.id.frame_layout, fragment)
-            addToBackStack(fragment.javaClass.name)
-            commit()
+    private fun setUpNavigation() {
+        binding.navBottom.setupWithNavController(
+            Navigation.findNavController(this, R.id.nav_host_fragment)
+        )
+        binding.navBottom.setOnNavigationItemSelectedListener { item ->
+            onNavDestinationSelected(item, Navigation.findNavController(this, R.id.nav_host_fragment))
         }
-
-    override fun onBackPressed() {
-        val count = supportFragmentManager.backStackEntryCount
-        if (count == 0) super.onBackPressed()
-        else supportFragmentManager.popBackStack()
     }
 
 }

@@ -77,6 +77,11 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'// no need
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
 
+    // navigation
+    def nav_version = "2.3.3"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
     // Room
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"

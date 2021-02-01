@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.basicecommerce.R
 import com.android.basicecommerce.base.BaseFragment
@@ -39,8 +40,6 @@ class ProfileFragment : BaseFragment() {
         (activity?.application as Injector).createProfileSubComponent()
             .inject(this)
 
-        initRecyclerView()
-
         return binding.root
     }
 
@@ -50,11 +49,14 @@ class ProfileFragment : BaseFragment() {
         viewModel = ViewModelProviders.of(this, factory)
             .get(ProfileViewModel::class.java)
 
+        initRecyclerView()
+
         observeProductList()
         observeException()
         observeError()
-
         observeRowDeleted()
+
+        handleBackClicked()
     }
 
     private fun initRecyclerView() {
@@ -115,6 +117,12 @@ class ProfileFragment : BaseFragment() {
                 )
             }
         })
+    }
+
+    private fun handleBackClicked() {
+        binding.ivBack.setOnClickListener {
+            it.findNavController().popBackStack()
+        }
     }
 
 }
