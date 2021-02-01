@@ -30,4 +30,15 @@ class DataMapperVM {
         )
     }
 
+    fun map(product: ProductVM): ProductPromo {
+        return ProductPromo(
+            id = product.id,
+            imageUrl = product.imageUrl,
+            title = product.title,
+            description = product.description,
+            price = product.price,
+            loved = product.loved
+        )
+    }
+
 }
