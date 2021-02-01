@@ -4,6 +4,7 @@ import com.android.basicecommerce.di.home.HomeSubComponent
 import com.android.basicecommerce.di.login.LoginSubComponent
 import com.android.basicecommerce.di.product.ProductSubComponent
 import com.android.basicecommerce.di.profile.ProfileSubComponent
+import com.android.basicecommerce.di.search.SearchSubComponent
 import dagger.Component
 import javax.inject.Singleton
 
@@ -28,5 +29,7 @@ interface AppComponent {
     fun productSubComponent(): ProductSubComponent.Factory
 
     fun profileSubComponent(): ProfileSubComponent.Factory
+
+    fun searchSubComponent(): SearchSubComponent.Factory
 
 }

@@ -5,6 +5,7 @@ import com.android.basicecommerce.di.home.HomeSubComponent
 import com.android.basicecommerce.di.login.LoginSubComponent
 import com.android.basicecommerce.di.product.ProductSubComponent
 import com.android.basicecommerce.di.profile.ProfileSubComponent
+import com.android.basicecommerce.di.search.SearchSubComponent
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -13,7 +14,8 @@ import javax.inject.Singleton
     LoginSubComponent::class,
     HomeSubComponent::class,
     ProductSubComponent::class,
-    ProfileSubComponent::class
+    ProfileSubComponent::class,
+    SearchSubComponent::class
 ])
 class AppModule(private val context: Context) {
 
