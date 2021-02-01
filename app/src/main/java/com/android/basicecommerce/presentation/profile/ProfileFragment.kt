@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
@@ -14,6 +13,7 @@ import com.android.basicecommerce.base.BaseFragment
 import com.android.basicecommerce.databinding.FragmentProfileBinding
 import com.android.basicecommerce.di.Injector
 import com.android.basicecommerce.presentation.model.ProductVM
+import com.android.basicecommerce.presentation.product.ProductActivity
 import javax.inject.Inject
 
 class ProfileFragment : BaseFragment() {
@@ -72,7 +72,8 @@ class ProfileFragment : BaseFragment() {
     }
 
     private fun productItemClicked(product: ProductVM) {
-        Toast.makeText(activity, "item", Toast.LENGTH_SHORT).show()
+        val intent = activity?.let { ProductActivity.newIntent(it, product) }
+        startActivity(intent)
     }
 
     private fun removeProductClicked(product: ProductVM) {
