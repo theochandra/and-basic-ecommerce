@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="product"
+            type="com.android.basicecommerce.presentation.model.ProductVM" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="@dimen/radius_s"
+        android:background="@color/white_200"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:padding="@dimen/padding_s"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_product"
+                app:imageUrl="@{product.imageUrl}"
+                android:layout_width="@dimen/category_image_width"
+                android:layout_height="@dimen/category_image_height"
+                tools:src="@tools:sample/avatars"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_product_title"
+                android:text="@{product.title}"
+                android:layout_width="@dimen/zero_dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_m"
+                style="@style/TextHeaderSmall"
+                tools:text="product name"
+                app:layout_constraintTop_toTopOf="@+id/iv_product"
+                app:layout_constraintStart_toEndOf="@+id/iv_product"
+                app:layout_constraintEnd_toStartOf="@+id/iv_remove"/>
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:text="@{product.price}"
+                android:layout_width="@dimen/zero_dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_m"
+                style="@style/TextBodyLarge"
+                tools:text="Rp 400"
+                app:layout_constraintTop_toBottomOf="@+id/tv_product_title"
+                app:layout_constraintStart_toEndOf="@+id/iv_product"
+                app:layout_constraintEnd_toStartOf="@+id/iv_remove"/>
+
+            <ImageView
+                android:id="@+id/iv_remove"
+                android:src="@drawable/ic_remove"
+                android:layout_width="@dimen/remove_icon_width"
+                android:layout_height="@dimen/zero_dp"
+                android:layout_marginEnd="@dimen/margin_s"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
