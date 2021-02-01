@@ -8,6 +8,7 @@ import com.android.basicecommerce.di.home.HomeSubComponent
 import com.android.basicecommerce.di.login.LoginSubComponent
 import com.android.basicecommerce.di.product.ProductSubComponent
 import com.android.basicecommerce.di.profile.ProfileSubComponent
+import com.android.basicecommerce.di.search.SearchSubComponent
 
 class BaseApplication : Application(), Injector {
 
@@ -36,6 +37,10 @@ class BaseApplication : Application(), Injector {
 
     override fun createProfileSubComponent(): ProfileSubComponent {
         return appComponent.profileSubComponent().create()
+    }
+
+    override fun createSearchSubComponent(): SearchSubComponent {
+        return appComponent.searchSubComponent().create()
     }
 
 }
