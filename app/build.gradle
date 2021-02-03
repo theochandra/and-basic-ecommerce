@@ -130,4 +130,9 @@ dependencies {
     kaptAndroidTest "com.google.dagger:dagger-compiler:$dagger_version"
     androidTestCompileOnly "javax.annotation:jsr250-api:$javax_annotation_version"
     androidTestImplementation "com.google.dagger:dagger:$dagger_version"
+
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2-native-mt'
+
+    def arch_version = "2.1.0"
+    testImplementation "androidx.arch.core:core-testing:$arch_version"
 }
