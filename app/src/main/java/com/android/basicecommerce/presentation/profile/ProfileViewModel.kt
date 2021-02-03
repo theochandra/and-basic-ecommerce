@@ -1,5 +1,6 @@
 package com.android.basicecommerce.presentation.profile
 
+import androidx.annotation.VisibleForTesting
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.*
 import com.android.basicecommerce.presentation.mapper.DataMapperVM
@@ -37,7 +38,8 @@ class ProfileViewModel(
         getPurchasedProducts()
     }
 
-    private fun getPurchasedProducts() {
+    @VisibleForTesting
+    fun getPurchasedProducts() {
         changeLoadingState(true)
         viewModelScope.launch {
             when (val result = getPurchasedProductsUseCase.execute()) {

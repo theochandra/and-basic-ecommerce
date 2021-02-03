@@ -24,11 +24,11 @@ class FakeBasicEcommerceRepositoryImpl : BasicEcommerceRepository {
     }
 
     override suspend fun addPurchasedProduct(product: ProductPromo): Long {
-        TODO("Not yet implemented")
+        return 1L
     }
 
     override suspend fun removePurchasedProduct(product: ProductPromo): Int {
-        TODO("Not yet implemented")
+        return 1
     }
 
 }

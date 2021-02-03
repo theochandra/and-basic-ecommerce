@@ -1,7 +1,6 @@
 package com.android.basicecommerce.presentation.login
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.basicecommerce.data.repository.FakeBasicEcommerceRepositoryImpl
 import com.android.basicecommerce.getOrAwaitValue
 import com.android.domain.usecase.LoginUseCase
@@ -9,7 +8,6 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 
 class LoginViewModelTest {
 
