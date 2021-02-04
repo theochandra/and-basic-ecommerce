@@ -38,8 +38,7 @@ class ProfileViewModel(
         getPurchasedProducts()
     }
 
-    @VisibleForTesting
-    fun getPurchasedProducts() {
+    private fun getPurchasedProducts() {
         changeLoadingState(true)
         viewModelScope.launch {
             when (val result = getPurchasedProductsUseCase.execute()) {

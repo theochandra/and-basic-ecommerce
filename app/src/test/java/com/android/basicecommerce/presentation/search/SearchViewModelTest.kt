@@ -1,4 +1,4 @@
-package com.android.basicecommerce.presentation.profile
+package com.android.basicecommerce.presentation.search
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.android.basicecommerce.data.repository.FakeBasicEcommerceRepositoryImpl
@@ -6,8 +6,7 @@ import com.android.basicecommerce.observeOnce
 import com.android.basicecommerce.presentation.mapper.DataMapperVM
 import com.android.domain.Result
 import com.android.domain.model.ProductPromo
-import com.android.domain.usecase.GetPurchasedProductsUseCase
-import com.android.domain.usecase.RemovePurchasedProductUseCase
+import com.android.domain.usecase.GetSearchedDataUseCase
 import com.nhaarman.mockitokotlin2.given
 import com.nhaarman.mockitokotlin2.mock
 import kotlinx.coroutines.runBlocking
@@ -20,7 +19,7 @@ import org.junit.rules.TestRule
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 
-class ProfileViewModelTest {
+class SearchViewModelTest {
 
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
@@ -28,10 +27,9 @@ class ProfileViewModelTest {
     @Mock
     lateinit var mapper: DataMapperVM
 
-    private lateinit var getPurchasedProductsUseCase: GetPurchasedProductsUseCase
-    private lateinit var removePurchasedProductUseCase: RemovePurchasedProductUseCase
+    private lateinit var getSearchedDataUseCase: GetSearchedDataUseCase
 
-    private lateinit var sut: ProfileViewModel
+    private lateinit var sut: SearchViewModel
 
     @Before
     fun setup() {
@@ -39,33 +37,31 @@ class ProfileViewModelTest {
 
         val fakeRepository = FakeBasicEcommerceRepositoryImpl()
 
-        getPurchasedProductsUseCase = GetPurchasedProductsUseCase(fakeRepository)
-        removePurchasedProductUseCase = RemovePurchasedProductUseCase(fakeRepository)
+        getSearchedDataUseCase = GetSearchedDataUseCase(fakeRepository)
 
-        sut = ProfileViewModel(getPurchasedProductsUseCase,
-            removePurchasedProductUseCase, mapper)
+        sut = SearchViewModel(getSearchedDataUseCase, mapper)
     }
 
     @Test
-    fun `observe product list when get purchased product return result success`() {
-        var listProductPromo = listOf<ProductPromo>()
+    fun `observe product list when get searched data return result success`() {
+        var listProduct = listOf<ProductPromo>()
         runBlocking {
-            when (val result = getPurchasedProductsUseCase.execute()) {
+            when (val result = getSearchedDataUseCase.execute()) {
                 is Result.Success -> {
-                    listProductPromo = result.data
+                    listProduct = result.data
                 }
             }
         }
         sut.productList.observeOnce { listProductVM ->
-            assertThat(listProductVM, equalTo(listProductPromo.map { mapper.map(it) }))
+            assertThat(listProductVM, equalTo(listProduct.map { mapper.map(it) }))
         }
     }
 
     @Test
-    fun `observe error when get purchased product return error`() {
+    fun `observe error when get searched data return error`() {
         val errorCode = 404
         val errorMessage = "Error Occurred!"
-        val useCase: GetPurchasedProductsUseCase = mock()
+        val useCase: GetSearchedDataUseCase = mock()
 
         runBlocking {
             given(useCase.execute())
@@ -77,9 +73,9 @@ class ProfileViewModelTest {
     }
 
     @Test
-    fun `observe exception when get purchased product return exception`() {
+    fun `observe exception when searched get data return exception`() {
         val exception: Exception = mock()
-        val useCase: GetPurchasedProductsUseCase = mock()
+        val useCase: GetSearchedDataUseCase = mock()
 
         runBlocking {
             given(useCase.execute())

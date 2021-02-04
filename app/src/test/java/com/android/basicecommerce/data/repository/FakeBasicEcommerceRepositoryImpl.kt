@@ -4,6 +4,7 @@ import com.android.domain.Result
 import com.android.domain.model.Data
 import com.android.domain.model.ProductPromo
 import com.android.domain.repository.BasicEcommerceRepository
+import com.nhaarman.mockitokotlin2.mock
 
 class FakeBasicEcommerceRepositoryImpl : BasicEcommerceRepository {
 
@@ -12,15 +13,18 @@ class FakeBasicEcommerceRepositoryImpl : BasicEcommerceRepository {
     }
 
     override suspend fun getHomeScreenData(): Result<Data> {
-        TODO("Not yet implemented")
+        val data: Data = mock()
+        return Result.Success(data)
     }
 
     override suspend fun getSearchedData(): Result<List<ProductPromo>> {
-        TODO("Not yet implemented")
+        val listProductPromo = listOf<ProductPromo>()
+        return Result.Success(listProductPromo)
     }
 
     override suspend fun getPurchasedProducts(): Result<List<ProductPromo>> {
-        TODO("Not yet implemented")
+        val listProductPromo = listOf<ProductPromo>()
+        return Result.Success(listProductPromo)
     }
 
     override suspend fun addPurchasedProduct(product: ProductPromo): Long {
