@@ -35,7 +35,9 @@ dependencies {
 
     // Test
     testImplementation "junit:junit:$junit_version"
-    testImplementation "org.mockito:mockito-inline:$mockito_version"
 
-    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2-native-mt'
+    testImplementation "org.mockito:mockito-inline:$mockito_version"
+    testImplementation "com.nhaarman:mockito-kotlin:$mockito_nhaarman_version"
+
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_test_version"
 }

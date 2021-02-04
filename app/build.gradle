@@ -52,7 +52,6 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
 }
 
 dependencies {
@@ -125,7 +124,7 @@ dependencies {
     testImplementation "org.mockito:mockito-inline:$mockito_version"
     testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0'
     testImplementation 'org.amshove.kluent:kluent:1.51'
-    testImplementation "com.nhaarman:mockito-kotlin:$mockito_kotlin_version"
+    testImplementation "com.nhaarman:mockito-kotlin:$mockito_nhaarman_version"
 
     kaptTest "com.google.dagger:dagger-compiler:$dagger_version"
     testCompileOnly "javax.annotation:jsr250-api:$javax_annotation_version"

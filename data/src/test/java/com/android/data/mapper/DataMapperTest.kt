@@ -5,6 +5,8 @@ import com.android.data.response.DataResponse
 import com.android.data.response.DataResultResponse
 import com.android.data.response.ProductPromoResponse
 import com.android.domain.model.ProductPromo
+import org.hamcrest.CoreMatchers.equalTo
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -84,189 +86,189 @@ class DataMapperTest {
     @Test
     fun `maps list data result response into data category list`() {
         val result = sut.map(dataResponseList)
-        Assert.assertEquals(result.categoryList,
-            dataResponseList[0].dataResponse.categoryResponseList.map { sut.map(it) })
+        assertThat(result.categoryList,
+            equalTo(dataResponseList[0].dataResponse.categoryResponseList.map { sut.map(it) }))
     }
 
     @Test
     fun `maps list data result response into data product promo list`() {
         val result = sut.map(dataResponseList)
-        Assert.assertEquals(result.productPromoList,
-            dataResponseList[0].dataResponse.productPromoResponseList.map { sut.map(it) })
+        assertThat(result.productPromoList,
+            equalTo(dataResponseList[0].dataResponse.productPromoResponseList.map { sut.map(it) }))
     }
 
     @Test
     fun `maps category response into category image url`() {
         val result = sut.map(categoryResponse)
-        Assert.assertEquals(result.imageUrl, categoryResponse.imageUrl)
+        assertThat(result.imageUrl, equalTo(categoryResponse.imageUrl))
     }
 
     @Test
     fun `maps category response into category id`() {
         val result = sut.map(categoryResponse)
-        Assert.assertEquals(result.id, categoryResponse.id)
+        assertThat(result.id, equalTo(categoryResponse.id))
     }
 
     @Test
     fun `maps category response into category name`() {
         val result = sut.map(categoryResponse)
-        Assert.assertEquals(result.name, categoryResponse.name)
+        assertThat(result.name, equalTo(categoryResponse.name))
     }
 
     @Test
     fun `maps product promo response into product promo id`() {
         val result = sut.map(productPromoResponse)
-        Assert.assertEquals(result.id, productPromoResponse.id)
+        assertThat(result.id, equalTo(productPromoResponse.id))
     }
 
     @Test
     fun `maps product promo response into product promo image url`() {
         val result = sut.map(productPromoResponse)
-        Assert.assertEquals(result.imageUrl, productPromoResponse.imageUrl)
+        assertThat(result.imageUrl, equalTo(productPromoResponse.imageUrl))
     }
 
     @Test
     fun `maps product promo response into product promo title`() {
         val result = sut.map(productPromoResponse)
-        Assert.assertEquals(result.title, productPromoResponse.title)
+        assertThat(result.title, equalTo(productPromoResponse.title))
     }
 
     @Test
     fun `maps product promo response into product promo description`() {
         val result = sut.map(productPromoResponse)
-        Assert.assertEquals(result.description, productPromoResponse.description)
+        assertThat(result.description, equalTo(productPromoResponse.description))
     }
 
     @Test
     fun `maps product promo response into product promo price`() {
         val result = sut.map(productPromoResponse)
-        Assert.assertEquals(result.price, productPromoResponse.price)
+        assertThat(result.price, equalTo(productPromoResponse.price))
     }
 
     @Test
     fun `maps product promo response into product promo loved`() {
         val result = sut.map(productPromoResponse)
-        Assert.assertEquals(result.loved, productPromoResponse.loved)
+        assertThat(result.loved, equalTo(productPromoResponse.loved))
     }
 
     @Test
     fun `maps list model product into list product promo`() {
         val result = sut.map(productModelList)
-        Assert.assertEquals(result, productModelList.map { sut.map(it) })
+        assertThat(result, equalTo(productModelList.map { sut.map(it) }))
     }
 
     @Test
     fun `maps model product into product promo id`() {
         val result = sut.map(modelProduct)
-        Assert.assertEquals(result.id, modelProduct.id)
+        assertThat(result.id, equalTo(modelProduct.id))
     }
 
     @Test
     fun `maps model product into product promo image url`() {
         val result = sut.map(modelProduct)
-        Assert.assertEquals(result.imageUrl, modelProduct.imageUrl)
+        assertThat(result.imageUrl, equalTo(modelProduct.imageUrl))
     }
 
     @Test
     fun `maps model product into product promo title`() {
         val result = sut.map(modelProduct)
-        Assert.assertEquals(result.title, modelProduct.title)
+        assertThat(result.title, equalTo(modelProduct.title))
     }
 
     @Test
     fun `maps model product into product promo description`() {
         val result = sut.map(modelProduct)
-        Assert.assertEquals(result.description, modelProduct.description)
+        assertThat(result.description, equalTo(modelProduct.description))
     }
 
     @Test
     fun `maps model product into product promo price`() {
         val result = sut.map(modelProduct)
-        Assert.assertEquals(result.price, modelProduct.price)
+        assertThat(result.price, equalTo(modelProduct.price))
     }
 
     @Test
     fun `maps model product into product promo loved`() {
         val result = sut.map(modelProduct)
-        Assert.assertEquals(result.loved, modelProduct.loved)
+        assertThat(result.loved, equalTo(modelProduct.loved))
     }
 
     @Test
     fun `maps list entity product into list product promo`() {
         val result = sut.mapProductEntity(productEntityList)
-        Assert.assertEquals(result, productEntityList.map { sut.map(it) })
+        assertThat(result, equalTo(productEntityList.map { sut.map(it) }))
     }
 
     @Test
     fun `maps entity product into product promo id`() {
         val  result = sut.map(entityProduct)
-        Assert.assertEquals(result.id, entityProduct.id)
+        assertThat(result.id, equalTo(entityProduct.id))
     }
 
     @Test
     fun `maps entity product into product promo image url`() {
         val  result = sut.map(entityProduct)
-        Assert.assertEquals(result.imageUrl, entityProduct.imageUrl)
+        assertThat(result.imageUrl, equalTo(entityProduct.imageUrl))
     }
 
     @Test
     fun `maps entity product into product promo title`() {
         val  result = sut.map(entityProduct)
-        Assert.assertEquals(result.title, entityProduct.title)
+        assertThat(result.title, equalTo(entityProduct.title))
     }
 
     @Test
     fun `maps entity product into product promo description`() {
         val  result = sut.map(entityProduct)
-        Assert.assertEquals(result.description, entityProduct.description)
+        assertThat(result.description, equalTo(entityProduct.description))
     }
 
     @Test
     fun `maps entity product into product promo price`() {
         val  result = sut.map(entityProduct)
-        Assert.assertEquals(result.price, entityProduct.price)
+        assertThat(result.price, equalTo(entityProduct.price))
     }
 
     @Test
     fun `maps entity product into product promo loved`() {
         val  result = sut.map(entityProduct)
-        Assert.assertEquals(result.loved, entityProduct.loved)
+        assertThat(result.loved, equalTo(entityProduct.loved))
     }
 
     @Test
     fun `maps product promo into entity product id`() {
         val result = sut.map(productPromo)
-        Assert.assertEquals(result.id, productPromo.id)
+        assertThat(result.id, equalTo(productPromo.id))
     }
 
     @Test
     fun `maps product promo into entity product image url`() {
         val result = sut.map(productPromo)
-        Assert.assertEquals(result.imageUrl, productPromo.imageUrl)
+        assertThat(result.imageUrl, equalTo(productPromo.imageUrl))
     }
 
     @Test
     fun `maps product promo into entity product title`() {
         val result = sut.map(productPromo)
-        Assert.assertEquals(result.title, productPromo.title)
+        assertThat(result.title, equalTo(productPromo.title))
     }
 
     @Test
     fun `maps product promo into entity product description`() {
         val result = sut.map(productPromo)
-        Assert.assertEquals(result.description, productPromo.description)
+        assertThat(result.description, equalTo(productPromo.description))
     }
 
     @Test
     fun `maps product promo into entity product price`() {
         val result = sut.map(productPromo)
-        Assert.assertEquals(result.price, productPromo.price)
+        assertThat(result.price, equalTo(productPromo.price))
     }
 
     @Test
     fun `maps product promo into entity product loved`() {
         val result = sut.map(productPromo)
-        Assert.assertEquals(result.loved, productPromo.loved)
+        assertThat(result.loved, equalTo(productPromo.loved))
     }
     
 }

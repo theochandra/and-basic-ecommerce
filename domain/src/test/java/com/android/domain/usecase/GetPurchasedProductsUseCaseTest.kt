@@ -4,16 +4,16 @@ import com.android.domain.Result
 import com.android.domain.coroutines.CoroutineTestRule
 import com.android.domain.model.ProductPromo
 import com.android.domain.repository.BasicEcommerceRepository
+import com.nhaarman.mockito_kotlin.given
+import com.nhaarman.mockito_kotlin.mock
+import com.nhaarman.mockito_kotlin.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito.`when`
-import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
@@ -36,43 +36,38 @@ class GetPurchasedProductsUseCaseTest {
     @Test
     fun `returns result success when success get purchased product list`() {
         runBlocking {
-            val productList = listOf<ProductPromo>()
+            val productList: List<ProductPromo> = mock()
+            given(repository.getPurchasedProducts())
+                .willReturn(Result.Success(productList))
 
-            `when`(repository.getPurchasedProducts())
-                .thenReturn(Result.Success(productList))
-
-            val result = sut.execute()
+            sut.execute()
 
             verify(repository).getPurchasedProducts()
-            Assert.assertEquals(result, Result.Success(productList))
         }
     }
 
     @Test
     fun `returns result error when failed get purchased product list`() {
         runBlocking {
-            `when`(repository.getPurchasedProducts())
-                .thenReturn(Result.Error(404, "error occurred"))
+            given(repository.getPurchasedProducts())
+                .willReturn(Result.Error(404, "error occurred"))
 
-            val result = sut.execute()
+            sut.execute()
 
             verify(repository).getPurchasedProducts()
-            Assert.assertEquals(result, Result.Error(404, "error occurred"))
         }
     }
 
     @Test
     fun `return result exception when exception occurred`() {
         runBlocking {
-            val exception = Exception()
+            val exception: Exception = mock()
+            given(repository.getPurchasedProducts())
+                .willReturn(Result.Exception(exception))
 
-            `when`(repository.getPurchasedProducts())
-                .thenReturn(Result.Exception(exception))
-
-            val result = sut.execute()
+            sut.execute()
 
             verify(repository).getPurchasedProducts()
-            Assert.assertEquals(result, Result.Exception(exception))
         }
     }
 
