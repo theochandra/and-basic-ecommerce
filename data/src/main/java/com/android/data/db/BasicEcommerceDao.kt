@@ -15,4 +15,7 @@ interface BasicEcommerceDao {
     @Delete
     suspend fun removePurchasedProduct(product: Product): Int
 
+    @Query("DELETE FROM TABLE_PRODUCT WHERE idPrimaryKey = :idPrimaryKey")
+    suspend fun removePurchasedProductById(idPrimaryKey: Int): Int
+
 }
