@@ -25,10 +25,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -69,18 +71,10 @@ dependencies {
 
     // testing
     testImplementation "junit:junit:$junit_version"
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
     testImplementation "org.mockito:mockito-inline:$mockito_version"
-    testImplementation "com.nhaarman:mockito-kotlin:$mockito_kotlin_version"
+    testImplementation "com.nhaarman:mockito-kotlin:$mockito_nhaarman_version"
 
-    kaptTest "com.google.dagger:dagger-compiler:$dagger_version"
-    testCompileOnly "javax.annotation:jsr250-api:$javax_annotation_version"
-    testImplementation "com.google.dagger:dagger:$dagger_version"
-    kaptAndroidTest "com.google.dagger:dagger-compiler:$dagger_version"
-    androidTestCompileOnly "javax.annotation:jsr250-api:$javax_annotation_version"
-    androidTestImplementation "com.google.dagger:dagger:$dagger_version"
-
-    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2-native-mt'
-    testImplementation 'com.squareup.okhttp3:mockwebserver:4.9.0'
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_test_version"
+    
 }
