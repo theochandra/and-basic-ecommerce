@@ -11,6 +11,7 @@
     </data>
 
     <ScrollView
+        android:id="@+id/screen_login"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
@@ -39,6 +40,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tv_label_login"
                         android:text="@string/label_login"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -87,6 +89,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <CheckBox
+                        android:id="@+id/cb_remember_me"
                         android:text="@string/label_remember_me"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
